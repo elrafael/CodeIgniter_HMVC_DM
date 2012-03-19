@@ -44,7 +44,7 @@ And your Apache's virtual hosts maybe look like this:
 
 	</Directory>
 	<VirtualHost *:80>
-	        ServerName "ci172.dev"
+	        ServerName "codeigniter.dev"
 	        DocumentRoot "/Applications/MAMP/htdocs/codeigniter/www"
 	</VirtualHost>
 
