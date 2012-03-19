@@ -10,8 +10,8 @@ You can check the documentation of the libraries
 included
 
 * [datamapper](http://datamapper.wanwizard.eu/) - DataMapper ORM
-* [modular_extesions](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/wiki/Home) Modular Extensions
-* [template_library](http://maestric.com/doc/php/codeigniter_template) A very simple and objective template library
+* [modular_extesions](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/wiki/Home) - Modular Extensions
+* [template_library](http://maestric.com/doc/php/codeigniter_template) - A very simple and objective template library
 
 Virtual Hosts
 -------------
@@ -71,4 +71,6 @@ UTF-8 Problem in MAC OS X
 
 If you pretend to use accentuation, change the *charset*
 inside ``application/config/config.php`` file to lowercase
+
 	$config['charset'] =  'utf-8'; //Instead UTF-8
+
