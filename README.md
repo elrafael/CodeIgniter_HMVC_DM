@@ -48,7 +48,7 @@ And your Apache's virtual hosts maybe look like this:
 	        DocumentRoot "/Applications/MAMP/htdocs/codeigniter/www"
 	</VirtualHost>
 
-Now you can access your project in this address: **http://codeigniter.dev*
+Now you can access your project in this address: **http://codeigniter.dev**
 
 ### MAC OS X
 
