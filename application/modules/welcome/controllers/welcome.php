@@ -19,12 +19,26 @@ class Welcome extends Public_Controller {
 	 */
 	public function index()
 	{
-		$this->template->load('templates/default', 'welcome_message');
+		$this->template->build('welcome_message');
 	}
 	
 	public function info()
 	{
 		phpinfo();
+	}
+
+	public function message()
+	{	
+		$this->data['mensagem'] = $this->session->flashdata('dump2');
+		
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
+		{
+			$this->session->set_flashdata('dump2', gmdate('Y-m-d H:i:s'));
+
+			redirect( current_url() );
+		}
+
+		$this->template->build('message', $this->data);
 	}
 }
 
