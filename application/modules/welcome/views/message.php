@@ -1,5 +1,5 @@
 <form method="post" action="<?php echo current_url(); ?>">
-	<button type="submit">Test .htaccess</button>
+	<button type="submit" class="btn btn-info"><i class="icon-ok icon-white"></i> Test .htaccess</button>
 </form>
 
-<?php echo $mensagem; ?>
+<code><?php echo $mensagem; ?></code>
