@@ -23,9 +23,15 @@ class Welcome extends Public_Controller {
 		$this->template->build('welcome_message');
 	}
 	
-	public function info()
+	public function phptal()
 	{
-		phpinfo();
+		$this->load->library('tal');
+		$admin = new Administrator();
+		$admin->get();
+		foreach ( $admin as $a )
+			$array[] = $a->email;
+		$this->tal->admins = $admin;
+		$this->tal->display('phptal');
 	}
 
 	public function message()
