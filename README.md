@@ -11,7 +11,7 @@ included
 
 * [datamapper](http://datamapper.wanwizard.eu/) - DataMapper ORM
 * [modular_extesions](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/wiki/Home) - Modular Extensions
-* [template_library](http://maestric.com/doc/php/codeigniter_template) - A very simple and objective template library
+* [template_library](http://philsturgeon.co.uk/demos/codeigniter-template/user_guide/) - Template library from Phil Sturgeon
 
 Virtual Hosts
 -------------
