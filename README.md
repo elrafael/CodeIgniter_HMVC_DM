@@ -16,19 +16,6 @@ included
 Virtual Hosts
 -------------
 
-You can see that I'm using www **public folder**
-instead putting index.php in the same level that
-*application* and *system* folders.
-
-To do that way, you'll need to change *index.php*
-file and set the right path for these folders, ie:
-
-	$system_path = '../system';
-
-and
-
-	$application_folder = '../application';
-
 You'll need to change your Apache Virtual Hosts file
 and your OS hosts file.
 
@@ -40,12 +27,12 @@ hosts file will be inside */etc/* folder.
 And your Apache's virtual hosts maybe look like this:
 
 	NameVirtualHost *:80
-	<Directory "/Applications/MAMP/htdocs/codeigniter/www/">
+	<Directory "/Applications/MAMP/htdocs/codeigniter/">
 
 	</Directory>
 	<VirtualHost *:80>
 	        ServerName "codeigniter.dev"
-	        DocumentRoot "/Applications/MAMP/htdocs/codeigniter/www"
+	        DocumentRoot "/Applications/MAMP/htdocs/codeigniter"
 	</VirtualHost>
 
 Now you can access your project in this address: **http://codeigniter.dev**
