@@ -19,6 +19,7 @@ class Welcome extends Public_Controller {
 	 */
 	public function index()
 	{
+		echo __FILE__;
 		$this->template->build('welcome_message');
 	}
 	

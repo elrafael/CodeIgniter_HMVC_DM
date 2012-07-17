@@ -57,7 +57,7 @@
 	<div class="row-fluid">  
 	  <div class="span12">
 	    <div class="content">
-	    	<?php echo PHP_EOL; ?><?php echo $contents; ?><?php echo PHP_EOL; ?>
+	    	<?php echo PHP_EOL; ?><?php echo $template['body']; ?><?php echo PHP_EOL; ?>
 	    </div>
 	  </div>
 	</div>

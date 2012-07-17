@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title></title>
@@ -10,6 +10,13 @@
 	<link href="<?php echo base_url('css/bootstrap.css'); ?>" rel="stylesheet">
 </head>
 <body>
-	<?php echo $template['body']; ?>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<?php echo $template['body']; ?>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

@@ -31,7 +31,9 @@ class Administrators extends Public_controller {
 			redirect('administrators/');
 		}
 		
-		$this->template->load('templates/admin', 'login', $this->data);
+		$this->template
+			->set_layout('admin')
+			->build('login', $this->data);
 	}
 	
 	public function logout()
