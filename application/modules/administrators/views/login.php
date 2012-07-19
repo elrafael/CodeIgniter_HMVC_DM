@@ -1,7 +1,10 @@
 <?php echo form_open( current_url(), 'class="form-horizontal"' ); ?>
 <?php if ( $message ) : ?>
-	<p><?php echo $message; ?></p>
+	<div class="alert">
+	  <strong>Warning!</strong> <?php echo $message; ?>
+	</div>
 <?php endif; ?>
+
 <fieldset>
 	<legend>Login</legend>
 	<?php $login_error = (form_error('email')) ? ' error' : ''; ?>

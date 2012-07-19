@@ -8,16 +8,16 @@
 | for base controllers and some third-party libraries.
 |
 */
-function __autoload($class)
-{
-	if(strpos($class, 'CI_') !== 0)
-	{
-		if ( file_exists( APPPATH . 'core/' . $class . EXT ) )
-			@include_once( APPPATH . 'core/'. $class . EXT );
-		if ( file_exists( APPPATH . 'libraries/' . $class . EXT ) )
-			@include_once( APPPATH . 'libraries/' . $class. EXT );
-	}
-}
+// function __autoload($class)
+// {
+// 	if(strpos($class, 'CI_') !== 0)
+// 	{
+// 		if ( file_exists( APPPATH . 'core/' . $class . EXT ) )
+// 			@include_once( APPPATH . 'core/'. $class . EXT );
+// 		if ( file_exists( APPPATH . 'libraries/' . $class . EXT ) )
+// 			@include_once( APPPATH . 'libraries/' . $class. EXT );
+// 	}
+// }
 
 /*
 |--------------------------------------------------------------------------

@@ -1,7 +1,5 @@
 <?php
 
-require_once APPPATH . 'third_party/MX/Controller' . EXT;
-
 class MY_Controller extends MX_Controller {
 	
 	public $data = array();
@@ -9,6 +7,8 @@ class MY_Controller extends MX_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->spark('template/1.9.0');
+		$this->load->library('form_validation');
 	}
 }
+/* End of file MY_Controller.php */
+/* Location: ./application/core/MY_Controller.php */

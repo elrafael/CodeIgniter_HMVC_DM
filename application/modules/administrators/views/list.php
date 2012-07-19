@@ -1,6 +1,7 @@
 <?php if ( $message) : ?>
 	<p><?php echo $message; ?></p>
 <?php endif; ?>
+
 <table cellpadding="0" cellspacing="0" class="table table-stripped">
 	<thead>
 		<tr>

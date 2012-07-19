@@ -15,7 +15,7 @@ class Admin extends Admin_controller {
 		$administrators = new Administrator();
 		$this->data['administrators'] = $administrators->get_by_active();
 		
-		$this->template->load($this->default_template, 'list', $this->data);
+		$this->template->build('list', $this->data);
 	}
 	
 	public function add()
@@ -33,7 +33,7 @@ class Admin extends Admin_controller {
 			
 			redirect('administrators/admin');
 		}
-		$this->template->load($this->default_template, 'crud', $this->data);
+		$this->template->build('crud', $this->data);
 	}
 	
 	public function edit($id)
@@ -52,7 +52,7 @@ class Admin extends Admin_controller {
 			
 			redirect('administrators/admin');
 		}
-		$this->template->load($this->default_template, 'crud', $this->data);
+		$this->template->build('crud', $this->data);
 	}
 	
 	public function remove($id)
@@ -94,3 +94,5 @@ class Admin extends Admin_controller {
 		return $administrator->save();
 	}
 }
+/* End of file admin.php */
+/* Location: ./application/modules/administrators/controllers/admin.php */

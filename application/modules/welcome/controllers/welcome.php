@@ -2,6 +2,10 @@
 
 class Welcome extends Public_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -22,17 +26,7 @@ class Welcome extends Public_Controller {
 		echo __FILE__;
 		$this->template->build('welcome_message');
 	}
-	
-	public function phptal()
-	{
-		$this->load->library('tal');
-		$admin = new Administrator();
-		$admin->get();
-		foreach ( $admin as $a )
-			$array[] = $a->email;
-		$this->tal->admins = $admin;
-		$this->tal->display('phptal');
-	}
+
 
 	public function message()
 	{	

@@ -2,17 +2,24 @@
 
 class Administrators extends Public_controller {
 	
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
 	public function index()
 	{
 		if ( ! $this->session->userdata('admin_id') )
 			redirect('administrators/login');
-		$this->template->load('templates/admin', 'dashboard', $this->data);
+		$this->template
+			->set_layout('admin')
+			->build('dashboard', $this->data);
 	}
 	
 	public function login()
 	{
 		$this->data['message'] = $this->session->flashdata('message');
-		$this->load->library('form_validation');
+
 		$this->form_validation->set_rules('email', 		'E-mail', 	'required|valid_email');
 		$this->form_validation->set_rules('password', 	'Password', 'required');
 		if ( $this->form_validation->run() === TRUE )
@@ -26,7 +33,10 @@ class Administrators extends Public_controller {
 			if ( $admin->result_count() > 0 )
 				$this->session->set_userdata('admin_id', do_hash($admin->id));
 			else
+			{
 				$this->session->set_flashdata('message', 'E-mail and/or password invalid.');
+				redirect( current_url() );
+			}
 
 			redirect('administrators/');
 		}
@@ -42,3 +52,5 @@ class Administrators extends Public_controller {
 		redirect('administrators');
 	}
 }
+/* End of file administrators.php */
+/* Location: ./application/modules/administrators/controllers/administrators.php */
