@@ -13,7 +13,7 @@ class Admin extends Admin_controller {
 		$groups = new Group();
 		$this->data['groups'] = $groups->get_by_active();
 		
-		$this->template->load($this->default_template, 'list', $this->data);
+		$this->template->build('list', $this->data);
 	}
 	
 	public function add()
@@ -31,7 +31,7 @@ class Admin extends Admin_controller {
 			
 			redirect('groups/admin');
 		}
-		$this->template->load($this->default_template, 'crud', $this->data);
+		$this->template->build('crud', $this->data);
 	}
 	
 	public function edit($id)
