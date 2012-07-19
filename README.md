@@ -27,12 +27,12 @@ hosts file will be inside */etc/* folder.
 And your Apache's virtual hosts maybe look like this:
 
 	NameVirtualHost *:80
-	<Directory "/Applications/MAMP/htdocs/codeigniter/">
+	<Directory "/Applications/MAMP/htdocs/codeigniter/www/">
 
 	</Directory>
 	<VirtualHost *:80>
 	        ServerName "codeigniter.dev"
-	        DocumentRoot "/Applications/MAMP/htdocs/codeigniter"
+	        DocumentRoot "/Applications/MAMP/htdocs/codeigniter/www"
 	</VirtualHost>
 
 Now you can access your project in this address: **http://codeigniter.dev**
