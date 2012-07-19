@@ -7,10 +7,10 @@
  * @link	http://codeigniter.com
  *
  * Description:
- * This library extends the CodeIgniter CI_Language class
+ * This library extends the CodeIgniter CI_Config class
  * and adds features allowing use of modules and the HMVC design pattern.
  *
- * Install this file as application/third_party/MX/Lang.php
+ * Install this file as application/third_party/MX/Config.php
  *
  * @copyright	Copyright (c) 2011 Wiredesignz
  * @version 	5.4
@@ -33,38 +33,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  **/
-class MX_Lang extends CI_Lang
-{
-	public function load($langfile = array(), $lang = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $_module = '')	{
+class MX_Config extends CI_Config 
+{	
+	public function load($file = 'config', $use_sections = FALSE, $fail_gracefully = FALSE, $_module = '') {
 		
-		if (is_array($langfile)) {
-			foreach($langfile as $_lang) $this->load($_lang);
-			return $this->language;
-		}
-			
-		$deft_lang = CI::$APP->config->item('language');
-		$idiom = ($lang == '') ? $deft_lang : $lang;
-	
-		if (in_array($langfile.'_lang'.EXT, $this->is_loaded, TRUE))
-			return $this->language;
+		if (in_array($file, $this->is_loaded, TRUE)) return $this->item($file);
 
 		$_module OR $_module = CI::$APP->router->fetch_module();
-		list($path, $_langfile) = Modules::find($langfile.'_lang', $_module, 'language/'.$idiom.'/');
-
+		list($path, $file) = Modules::find($file, $_module, 'config/');
+		
 		if ($path === FALSE) {
+			parent::load($file, $use_sections, $fail_gracefully);					
+			return $this->item($file);
+		}  
+		
+		if ($config = Modules::load_file($file, $path, 'config')) {
 			
-			if ($lang = parent::load($langfile, $lang, $return, $add_suffix, $alt_path)) return $lang;
-		
-		} else {
+			/* reference to the config array */
+			$current_config =& $this->config;
 
-			if($lang = Modules::load_file($_langfile, $path, 'lang')) {
-				if ($return) return $lang;
-				$this->language = array_merge($this->language, $lang);
-				$this->is_loaded[] = $langfile.'_lang'.EXT;
-				unset($lang);
+			if ($use_sections === TRUE)	{
+				
+				if (isset($current_config[$file])) {
+					$current_config[$file] = array_merge($current_config[$file], $config);
+				} else {
+					$current_config[$file] = $config;
+				}
+				
+			} else {
+				$current_config = array_merge($current_config, $config);
 			}
+			$this->is_loaded[] = $file;
+			unset($config);
+			return $this->item($file);
 		}
-		
-		return $this->language;
 	}
 }

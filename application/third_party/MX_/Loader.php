@@ -74,8 +74,7 @@ class MX_Loader extends CI_Loader
 		foreach (Modules::$locations as $location => $offset) {
 			
 			/* only add a module path if it exists */
-			if (is_dir($module_path = $location.$module.'/') && ! in_array($module_path, $this->_ci_model_paths)) 
-			{
+			if (is_dir($module_path = $location.$module.'/')) {
 				array_unshift($this->_ci_model_paths, $module_path);
 			}
 		}
@@ -102,7 +101,7 @@ class MX_Loader extends CI_Loader
 	}
 
 	/** Load a module helper **/
-	public function helper($helper = array()) {
+	public function helper($helper) {
 		
 		if (is_array($helper)) return $this->helpers($helper);
 		
@@ -117,12 +116,12 @@ class MX_Loader extends CI_Loader
 	}
 
 	/** Load an array of helpers **/
-	public function helpers($helpers = array()) {
+	public function helpers($helpers) {
 		foreach ($helpers as $_helper) $this->helper($_helper);	
 	}
 
 	/** Load a module language file **/
-	public function language($langfile = array(), $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '') {
+	public function language($langfile, $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '') {
 		return CI::$APP->lang->load($langfile, $idiom, $return, $add_suffix, $alt_path, $this->_module);
 	}
 	
@@ -189,7 +188,7 @@ class MX_Loader extends CI_Loader
 		if ($path == FALSE) {
 			
 			/* check application & packages */
-			parent::model($model, $object_name, $connect);
+			parent::model($model, $object_name);
 			
 		} else {
 			
@@ -268,7 +267,7 @@ class MX_Loader extends CI_Loader
 
 	public function _ci_is_instance() {}
 
-	protected function &_ci_get_component($component) {
+	public function _ci_get_component($component) {
 		return CI::$APP->$component;
 	} 
 
@@ -283,9 +282,7 @@ class MX_Loader extends CI_Loader
 		if (isset($_ci_view)) {
 			
 			$_ci_path = '';
-			
-			/* add file extension if not provided */
-			$_ci_file = (pathinfo($_ci_view, PATHINFO_EXTENSION)) ? $_ci_view : $_ci_view.EXT;
+			$_ci_file = strpos($_ci_view, '.') ? $_ci_view : $_ci_view.EXT;
 			
 			foreach ($this->_ci_view_paths as $path => $cascade) {				
 				if (file_exists($view = $path.$_ci_file)) {
